@@ -27,6 +27,9 @@
 
         document.querySelector(".js-tasks").innerHTML = htmlStrings;
 
+       bindEvents();
+    }
+    const bindEvents = () => {
         const toggleDoneButtons = document.querySelectorAll(".js-done");
 
         toggleDoneButtons.forEach((toggleDoneButton, index) => {
