@@ -18,6 +18,7 @@
             htmlStrings += `
             <li
              class="taskContent ${task.done ? "form__taskDone" : ""}">
+             <button class="js-done"></done>
              <button class="js-remove"></button>
             ${task.content}
             </li>
@@ -26,6 +27,14 @@
 
         document.querySelector(".js-tasks").innerHTML = htmlStrings;
 
+        const toggleDoneButtons = document.querySelectorAll(".js-done");
+
+        toggleDoneButtons.forEach((toggleDoneButton, index) => {
+            toggleDoneButton.addEventListener("click", () => {
+                toggleTaskDone(index);
+            });
+        });
+
         const removeButtons = document.querySelectorAll(".js-remove");
 
         removeButtons.forEach((removeButton, index) => {
@@ -33,6 +42,11 @@
                 removeTask(index);
             });
         });
+    }
+
+    const toggleTaskDone = (index) => {
+        tasks[index].done = !tasks[index].done;
+        render();
     }
 
     const addNewTask = (newTaskContent) => {
